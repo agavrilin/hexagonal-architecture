@@ -4,13 +4,11 @@ const db = require('../index');
 
 const User = db.sequelize.define('user', {
     phone: Sequelize.STRING,
-    firstName: Sequelize.STRING,
-    lastName: Sequelize.STRING,
-    nickname: Sequelize.STRING,
+    password: Sequelize.STRING,
+    name: Sequelize.STRING,
     email: Sequelize.STRING,
-    birthday: Sequelize.DATE,
+    country: Sequelize.STRING,
     bio: Sequelize.STRING,
-    imageUrl: Sequelize.STRING,
 });
 
 module.exports = User;

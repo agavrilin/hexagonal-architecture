@@ -1,21 +1,23 @@
 const User = require('./entity');
 
-const UserRepositoryInterface = require('../../../../domains/user/port/user.repository');
+const UserSecondaryPortInterface = require('../../../../ports/secondary/user.port');
 
-class UserRepository extends UserRepositoryInterface {
-    findOne(query) {
-        return User.findOne(query);
+class UserRepository extends UserSecondaryPortInterface {
+    async checkUniqueness(email, phone) {
+        const user = await User.findOne({ where: { email, phone } });
+
+        if (user) {
+            return false;
+        }
+
+        return true;
     }
 
-    findByPk(pk) {
-        return User.findByPk(pk);
+    findUser(email, phone) {
+        return User.findOne({ where: { email, phone } });
     }
 
-    find(query) {
-        return User.findAll(query);
-    }
-
-    create(data) {
+    save(data) {
         return User.create(data);
     }
 }

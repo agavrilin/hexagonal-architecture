@@ -12,5 +12,3 @@ const db = {};
 db.sequelize = sequelize;
 
 module.exports = db;
-
-// const userRepo = require('./user/repository');
